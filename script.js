@@ -1,3 +1,14 @@
+// In order to use lodash node module, we follow the
+// installation methodology listed in it's documentation.
+// We will use NPM here. 
+var _ = require('lodash');
+
+console.log(_);
+
+var array = [1,2,3,4,5,6,7,8];
+console.log('answer:', _.without(array, 3));
+
+
 var css = document.querySelector("h3");
 var color1 = document.querySelector(".color1");
 var color2 = document.querySelector(".color2");
@@ -42,6 +53,28 @@ function setGradientColor () {
 	css.textContent = body.style.background + ";";
 }
 
+// 				------ FOR FUTURE IMPROVEMENT REFERENCE -----
+// this app works well overall, but to improve it would
+// likely include to not have a random linear gradient direction
+// on loading, so as to keep a neat, uniform first impression.
+// to fix this, the setGradientColor function needs to have
+// the randomDirection removed and have it's own setRandomDirection
+// function created so as that these can be used separately,
+// and thus more appropriately.
+
+// function setGradientColorAndDirection () {
+// 	body.style.background =
+// 	"linear-gradient("
+// 	+ randomDirection() +
+// 	", "
+// 	+ color1.value
+// 	+ ", "
+// 	+ color2.value
+// 	+ ")";
+//
+// 	css.textContent = body.style.background + ";";
+// }
+
 // conversion found on CSS-Tricks
 
 function RGBToHex(r,g,b) {
@@ -76,7 +109,7 @@ function randomColor () {
 	return RGBToHex(red,green,blue);
 }
 
-randomColor();
+// randomColor();
 setGradientColor();
 color1.addEventListener("input", setGradientColor);
 color2.addEventListener("input", setGradientColor);
